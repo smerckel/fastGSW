@@ -1,0 +1,32 @@
+A ctypes python interface for some fast execution of gsw functions.
+
+Currently implemented:
+
+rho: in-situ density from C,t,p,lat,lon
+SA:  absolute salinity from C,t,p,lat,lon
+CT:  conservative temperature from C,t,p,lat,lon
+
+INSTALL
+
+First download and install the gsw_C library from http://www.teos-10.org/software.htm.
+
+* unzip the zip file
+* cd gsw_c_v3.5
+* make library
+* sudo cp libgswteos-10.so /usr/local/lib
+* sudo ldconfig /usr/local/lib
+
+
+Then make the gsw_vector library
+
+* cd gsw_vector
+* adjust, if necessary, the path to libgswteos include files.
+* make && sudo make install
+
+Build the python module
+
+python3 setup.py build && sudo python3 setup.py install
+
+
+
+
