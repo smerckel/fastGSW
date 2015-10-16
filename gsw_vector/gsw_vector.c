@@ -3,8 +3,8 @@
 void gsw_vector_rho(double *C,
 		    double *t,
 		    double *P,
-		    double *lat,
 		    double *lon,
+		    double *lat,
 		    unsigned int size,
 		    double *rho)
 {
@@ -13,7 +13,7 @@ void gsw_vector_rho(double *C,
   
   for(i=0;i<size;++i){
     SP=gsw_sp_from_c(C[i],t[i],P[i]);
-    SA=gsw_sa_from_sp(SP,P[i],lat[i],lon[i]);
+    SA=gsw_sa_from_sp(SP,P[i],lon[i],lat[i]);
     rho[i]=gsw_rho_t_exact(SA,t[i],P[i]);
   }
 }
@@ -22,8 +22,8 @@ void gsw_vector_rho(double *C,
 void gsw_vector_SA(double *C,
 		    double *t,
 		    double *P,
-		    double *lat,
 		    double *lon,
+		    double *lat,
 		    unsigned int size,
 		    double *SA)
 {
@@ -32,15 +32,15 @@ void gsw_vector_SA(double *C,
   
   for(i=0;i<size;++i){
     SP=gsw_sp_from_c(C[i],t[i],P[i]);
-    SA[i]=gsw_sa_from_sp(SP,P[i],lat[i],lon[i]);
+    SA[i]=gsw_sa_from_sp(SP,P[i],lon[i],lat[i]);
   }
 }
 
 void gsw_vector_CT(double *C,
 		    double *t,
 		    double *P,
-		    double *lat,
 		    double *lon,
+		    double *lat,
 		    unsigned int size,
 		    double *CT)
 {
@@ -49,7 +49,7 @@ void gsw_vector_CT(double *C,
   
   for(i=0;i<size;++i){
     SP=gsw_sp_from_c(C[i],t[i],P[i]);
-    SA=gsw_sa_from_sp(SP,P[i],lat[i],lon[i]);
+    SA=gsw_sa_from_sp(SP,P[i],lon[i],lat[i]);
     CT[i]=gsw_ct_from_t(SA,t[i],P[i]);
   }
 }
