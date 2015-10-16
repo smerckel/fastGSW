@@ -33,8 +33,8 @@ libgsw.gsw_vector_CT.argtypes=(ctypes.POINTER(ctypes.c_double),
 
 class Caller(object):
 
-    def __call__(self,libgsw_vector_fun,C,t,P,lat,lon):
-        return self.call_function(libgsw_vector_fun,C,t,P,lat,lon)
+    def __call__(self,libgsw_vector_fun,C,t,P,lon,lat):
+        return self.call_function(libgsw_vector_fun,C,t,P,lon,lat)
     
     def is_iterable(self,x):
         ''' see if a parameter is iterable '''
@@ -67,8 +67,8 @@ class Caller(object):
                     pm.append(np.array(_p).astype('float'))
         return s[0],pm
 
-    def call_function(self,libgsw_vector_fun,C,t,P,lat,lon):
-        n,(C,t,P,lat,lon)=self.cast_arguments(C,t,P,lat,lon)
+    def call_function(self,libgsw_vector_fun,C,t,P,lon,lat):
+        n,(C,t,P,lat,lon)=self.cast_arguments(C,t,P,lon,lat)
         x=np.zeros(n,float)
         libgsw_vector_fun(C.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
                           t.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
@@ -81,7 +81,7 @@ class Caller(object):
 
 __caller=Caller()
     
-def rho(C,t,P,lat,lon):
+def rho(C,t,P,lon,lat):
     '''
     Calculates in situ density of seawater from conductivity, in-situ temperature and pressure,
     and lat/lon.
@@ -89,13 +89,14 @@ def rho(C,t,P,lat,lon):
     C conductivity: mS/cm
     t in-situ temperature: deg C
     P pressure: dbar
-    lat latitude: decimal degrees
+
     lon longitude: decimal degrees
+    lat latitude: decimal degrees
 
     '''
-    return __caller(libgsw.gsw_vector_rho,C,t,P,lat,lon)
+    return __caller(libgsw.gsw_vector_rho,C,t,P,lon,lat)
 
-def CT(C,t,P,lat,lon):
+def CT(C,t,P,lon,lat):
     '''
     Calculates in conservative temperature from conductivity, in-situ temperature,pressure,
     and lat/lon.
@@ -103,11 +104,12 @@ def CT(C,t,P,lat,lon):
     C conductivity: mS/cm
     t in-situ temperature: deg C
     P pressure: dbar
-    lat latitude: decimal degrees
+
     lon longitude: decimal degrees
+    lat latitude: decimal degrees
 
     '''
-    return __caller(libgsw.gsw_vector_CT,C,t,P,lat,lon)
+    return __caller(libgsw.gsw_vector_CT,C,t,P,lon,lat)
 
 def SA(C,t,P,lat,lon):
     ''' returns absolute salinity
@@ -115,9 +117,11 @@ def SA(C,t,P,lat,lon):
     C conductivity: mS/cm
     t in-situ temperature: deg C
     P pressure: dbar
-    lat latitude: decimal degrees
+
     lon longitude: decimal degrees
+    lat latitude: decimal degrees
+
     '''
-    return __caller(libgsw.gsw_vector_SA,C,t,P,lat,lon)
+    return __caller(libgsw.gsw_vector_SA,C,t,P,lon,lat)
 
 
