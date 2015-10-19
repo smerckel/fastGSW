@@ -68,13 +68,13 @@ class Caller(object):
         return s[0],pm
 
     def call_function(self,libgsw_vector_fun,C,t,P,lon,lat):
-        n,(C,t,P,lat,lon)=self.cast_arguments(C,t,P,lon,lat)
+        n,(C,t,P,lon,lat)=self.cast_arguments(C,t,P,lon,lat)
         x=np.zeros(n,float)
         libgsw_vector_fun(C.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
                           t.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
                           P.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
-                          lat.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
                           lon.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
+                          lat.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
                           n,
                           x.ctypes.data_as(ctypes.POINTER(ctypes.c_double)))
         return x
@@ -111,7 +111,7 @@ def CT(C,t,P,lon,lat):
     '''
     return __caller(libgsw.gsw_vector_CT,C,t,P,lon,lat)
 
-def SA(C,t,P,lat,lon):
+def SA(C,t,P,lon,lat):
     ''' returns absolute salinity
 
     C conductivity: mS/cm
