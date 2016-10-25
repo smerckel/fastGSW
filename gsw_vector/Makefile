@@ -2,17 +2,23 @@
 #
 #
 
+MAJOR_VERSION:=0
+MINOR_VERSION:=1
+
+
 PREFIX:=/usr/local
 
 Program:=gsw_vector_check
 
 CFLAGS:=	-O3
-CINCLUDES:=	-I. -I../gsw_c_v3.05
+CINCLUDES:=	-I. 
 #CLIBRARIES:=	-L../gsw_c_v3.05
+CLIBRARIES:=    -L/usr/local/lib/
 Library:=	libgsw_vector.so
 
 $(Library)_SRCS:=	gsw_vector.c
 $(Library)_OBJS:=	gsw_vector.o
+$(Library)_HDRS:=	gsw_vector.h
 
 $(Program)_SRCS:=	gsw_vector_check.c
 $(Program)_OBJS:=	gsw_vector_check.o
@@ -32,12 +38,14 @@ $(Program):	$($(Program)_SRCS)
 
 $(Library):	$($(Library)_SRCS)
 	gcc -fPIC -c $(CFLAGS) $(CINCLUDES) $($(Library)_SRCS) 
-	gcc -shared -o $(Library) $($(Library)_OBJS) $(CLIBRARIES) -lm -lgswteos-10
+	gcc -shared -Wl,-soname,$(Library) -o $(Library).$(MAJOR_VERSION).$(MINOR_VERSION)  $($(Library)_OBJS) $(CLIBRARIES) -lm -lgswteos-10
 
 clean:
 	rm -f $(Program) $(Library) $($(Library)_OBJS)  $($(Program)_OBJS) 
 
 install:
-	install -m 0755 $(Library) $(PREFIX)/lib
-	ldconfig $(PREFIX)/lib
+	install -m 0755 $(Library).$(MAJOR_VERSION).$(MINOR_VERSION) $(PREFIX)/lib
+	install -m 0755 $($(Library)_HDRS) $(PREFIX)/include
+	ldconfig -n $(PREFIX)/lib
+	ldconfig
 

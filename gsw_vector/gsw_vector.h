@@ -2,7 +2,7 @@
 #define GSW_VECTOR_H
 
 #include <stdlib.h>
-#include "gswteos-10.h"
+#include <gswteos-10.h>
 
 void gsw_vector_rho(double *C,
 		    double *t,
