@@ -13,6 +13,16 @@ libgsw.gsw_vector_rho.argtypes=(ctypes.POINTER(ctypes.c_double),
                                 ctypes.c_uint,
                                 ctypes.POINTER(ctypes.c_double))
 
+libgsw.gsw_vector_pot_rho.restype=ctypes.c_void_p
+libgsw.gsw_vector_pot_rho.argtypes=(ctypes.POINTER(ctypes.c_double),
+                                    ctypes.POINTER(ctypes.c_double),
+                                    ctypes.POINTER(ctypes.c_double),
+                                    ctypes.POINTER(ctypes.c_double),
+                                    ctypes.POINTER(ctypes.c_double),
+                                    ctypes.c_uint,
+                                    ctypes.POINTER(ctypes.c_double))
+
+
 libgsw.gsw_vector_SA.restype=ctypes.c_void_p
 libgsw.gsw_vector_SA.argtypes=(ctypes.POINTER(ctypes.c_double),
                                 ctypes.POINTER(ctypes.c_double),
@@ -95,6 +105,23 @@ def rho(C,t,P,lon,lat):
 
     '''
     return __caller(libgsw.gsw_vector_rho,C,t,P,lon,lat)
+
+
+def pot_rho(C,t,P,lon,lat):
+    '''
+    Calculates in potential density of seawater from conductivity, in-situ temperature and pressure,
+    and lat/lon.
+
+    C conductivity: mS/cm
+    t in-situ temperature: deg C
+    P pressure: dbar
+
+    lon longitude: decimal degrees
+    lat latitude: decimal degrees
+
+    '''
+    return __caller(libgsw.gsw_vector_pot_rho,C,t,P,lon,lat)
+
 
 def CT(C,t,P,lon,lat):
     '''

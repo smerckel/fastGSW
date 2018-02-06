@@ -12,6 +12,14 @@ void gsw_vector_rho(double *C,
 		    unsigned int size,
 		    double *rho);
 
+void gsw_vector_pot_rho(double *C,
+			double *t,
+			double *P,
+			double *lat,
+			double *lon,
+			unsigned int size,
+			double *rho);
+
 void gsw_vector_SA(double *C,
 		   double *t,
 		   double *P,

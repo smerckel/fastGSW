@@ -19,6 +19,25 @@ void gsw_vector_rho(double *C,
 }
 
 
+void gsw_vector_pot_rho(double *C,
+			double *t,
+			double *P,
+			double *lon,
+			double *lat,
+			unsigned int size,
+			double *rho)
+{
+  unsigned int i;
+  double SA,SP;
+  
+  for(i=0;i<size;++i){
+    SP=gsw_sp_from_c(C[i],t[i],P[i]);
+    SA=gsw_sa_from_sp(SP,P[i],lon[i],lat[i]);
+    rho[i]=gsw_pot_rho_t_exact(SA,t[i],P[i], 0.);
+  }
+}
+
+
 void gsw_vector_SA(double *C,
 		    double *t,
 		    double *P,
