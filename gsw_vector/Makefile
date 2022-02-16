@@ -12,8 +12,7 @@ Program:=gsw_vector_check
 
 CFLAGS:=	-O3
 CINCLUDES:=	-I. 
-#CLIBRARIES:=	-L../gsw_c_v3.05
-CLIBRARIES:=    -L/usr/local/lib/
+CLIBRARIES:=    -L$(PREFIX)/lib
 Library:=	libgsw_vector.so
 
 $(Library)_SRCS:=	gsw_vector.c

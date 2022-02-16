@@ -14,6 +14,8 @@ First download and install the gsw_C library from http://www.teos-10.org/softwar
 * cd gsw_c_v3.5
 * make library
 * sudo cp libgswteos-10.so /usr/local/lib
+* sudo ln -sf /usr/local/lib/libgswteos-10.so.3 /usr/local/lib/libgswteos-10.so
+* sudo cp gswteos-10.h /usr/local/include
 * sudo ldconfig /usr/local/lib
 
 

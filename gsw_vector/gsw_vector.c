@@ -1,4 +1,7 @@
 #include "gsw_vector.h"
+#include <stdio.h>
+#include <stdlib.h>
+
 
 void gsw_vector_rho(double *C,
 		    double *t,
@@ -10,7 +13,7 @@ void gsw_vector_rho(double *C,
 {
   unsigned int i;
   double SA,SP;
-  
+
   for(i=0;i<size;++i){
     SP=gsw_sp_from_c(C[i],t[i],P[i]);
     SA=gsw_sa_from_sp(SP,P[i],lon[i],lat[i]);
