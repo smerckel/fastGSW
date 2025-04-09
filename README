@@ -29,6 +29,12 @@ Build the python module
 
 python3 setup.py build && sudo python3 setup.py install
 
+If you receive and error that the gsw_vector dynamic library cannot be
+loaded, then the /usr/local/lib path is not included in ldconfig. To
+that end create a file local.conf in /etc/ld.so.conf.d with the
+content
+/usr/local/lib
 
+The file local.conf could also be named differently, however. 
 
 
