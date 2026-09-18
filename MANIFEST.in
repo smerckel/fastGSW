@@ -1,9 +1,3 @@
-include gsw_vector/*.c
-include gsw_vector/*.h
-include gsw_vector/Makefile
-include gsw_c_v3.05/*.c
-include gsw_c_v3.05/*.h
-include gsw_c_v3.05/LICENSE
-include gsw_c_v3.05/?akefile
-
-
+include LICENSE
+recursive-include src/fast_gsw/_csrc *.c *.h
+include src/fast_gsw/_csrc/LICENSE

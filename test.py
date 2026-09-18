@@ -18,6 +18,6 @@ def get_rho(C,t,P,lat,lon):
     rho2=gsw.rho_t_exact(SA,t,P)
     return rho2
 
-profile.run("rho=fast_gsw.rho(C,t,P,lat,lon)")
+#profile.run("rho=fast_gsw.rho(C,t,P,lat,lon)")
 
-#profile.run("rho2=get_rho(C,t,P,lat,lon)")
+profile.run("rho2=get_rho(C,t,P,lat,lon)")

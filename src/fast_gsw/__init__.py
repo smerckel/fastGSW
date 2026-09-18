@@ -1,7 +1,18 @@
 import ctypes
+import glob
+import os
+
 import numpy as np
 
-libgsw=ctypes.CDLL(name='libgsw_vector.so')
+_pkg_dir = os.path.dirname(os.path.abspath(__file__))
+_candidates = glob.glob(os.path.join(_pkg_dir, "libgsw_vector*"))
+if not _candidates:
+    raise ImportError(
+        "Could not locate the compiled libgsw_vector shared library inside "
+        f"the fast_gsw package directory ({_pkg_dir}); was fast_gsw installed "
+        "correctly (pip install .)?"
+    )
+libgsw=ctypes.CDLL(_candidates[0])
 
 ## return and argument declarations.
 libgsw.gsw_vector_rho.restype=ctypes.c_void_p

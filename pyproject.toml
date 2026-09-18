@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fast_gsw"
+version = "0.2.0"
+description = "Fast ctypes-based implementation of some gsw (TEOS-10) functions for vectorized CTD processing"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+authors = [{ name = "Lucas Merckelbach", email = "lucasmerckelbach@gmail.com" }]
+requires-python = ">=3.9"
+dependencies = ["numpy"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: POSIX",
+    "Programming Language :: Python",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+zip-safe = false
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[dependency-groups]
+dev = [
+    "gsw>=3.6.20",
+    "ipython>=8.18.1",
+]
