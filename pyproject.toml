@@ -31,4 +31,6 @@ where = ["src"]
 dev = [
     "gsw>=3.6.20",
     "ipython>=8.18.1",
+    "pytest>=8.4.2",
+    "setuptools>=82.0.1",
 ]
