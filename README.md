@@ -45,5 +45,6 @@ pip install .
 ## License
 
 `fast_gsw` itself is licensed under the GPLv3 (see `LICENSE`). It vendors and
-compiles source code from the TEOS-10 GSW Oceanographic Toolbox, C version
-3.05, under the license in `src/fast_gsw/_csrc/LICENSE`.
+compiles source code from the [TEOS-10 GSW-C](https://github.com/TEOS-10/GSW-C)
+Oceanographic Toolbox, C version 3.06.16, under the license in
+`src/fast_gsw/_csrc/LICENSE`.
