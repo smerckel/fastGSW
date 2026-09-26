@@ -8,7 +8,7 @@ version = "0.2.0"
 description = "Fast ctypes-based implementation of some gsw (TEOS-10) functions for vectorized CTD processing"
 readme = "README.md"
 license = "GPL-3.0-or-later"
-authors = [{ name = "Lucas Merckelbach", email = "lucasmerckelbach@gmail.com" }]
+authors = [{ name = "Lucas Merckelbach", email = "lucas.merckelbach@hereon.de" }]
 requires-python = ">=3.9"
 dependencies = ["numpy"]
 classifiers = [
